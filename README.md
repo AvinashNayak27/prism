@@ -1,146 +1,170 @@
-# Prism - AI Art Platform
+# 🎨 Prism: Where Colors Become Art
 
-> *Metaphor for colors combining into art.*
+*Metaphor for colors combining into art.*
 
-Prism is an AI-driven art platform built on BaseColors, where creativity flows through the spectrum of owned colors. Each artwork is generated from palettes of existing color NFTs, transforming simple shades into vibrant, unique art pieces.
+[![Demo Video](https://img.shields.io/badge/Watch-Demo%20Video-blue?style=for-the-badge&logo=video)](https://cap.so/s/5pe31j5xww2v1yg)
 
-## 🌈 Features
+**Built for the Shapecraft Hackathon** - Prism transforms color ownership into living art through AI generation and automatic royalty distribution.
 
-- **AI-Driven Art Generation**: Create unique artworks from color palettes using advanced AI
-- **Color NFT Ownership**: Own colors on BaseColors and earn royalties when they're used in art
-- **Automatic Royalty Distribution**: Earn passive income when your colors are used in new artworks
-- **Living Licensing Model**: Your color ownership becomes a participatory licensing model
-- **Beautiful UI**: Modern, responsive design with glassmorphism effects and smooth animations
+## 🌟 Overview
+
+Prism is a revolutionary Web3 platform that bridges AI art generation with NFT color ownership. Users can select color NFTs from BaseColors, generate unique AI artworks using those colors, and automatically distribute royalties to color owners when artworks are minted.
+
+### 🎯 Core Concept
+
+- **Color NFT Ownership**: Own specific colors as NFTs on the Base network
+- **AI Art Generation**: Transform color palettes into unique digital artworks using OpenAI's latest models
+- **Automatic Royalties**: Color owners earn ETH when their colors are used in new artworks
+- **Living Licensing**: Color ownership becomes a participatory licensing model
+
+## ✨ Key Features
+
+### 🎨 AI-Driven Art Creation
+- Select up to 5 colors from your owned NFT collection
+- Generate unique artworks using OpenAI's GPT-4.1-mini with image generation
+- Precise color matching using reference swatches
+- Modern, digital art style optimized for NFT collections
+
+### 🌈 Color NFT Integration
+- Browse and purchase color NFTs from BaseColors marketplace
+- Track your color portfolio with earnings analytics
+- View usage statistics and ROI for each color
+- Automatic royalty distribution to color owners
+
+### 💰 Smart Contract Royalties
+- **Mint Price**: 0.001 ETH per artwork
+- **Royalty Distribution**: 0.0001 ETH per color owner (up to 5 colors)
+- **Automatic Payouts**: Smart contract handles instant royalty distribution
+- **Transparent Transactions**: All payments tracked on-chain
+
+### 🖼️ NFT Gallery
+- Explore all minted Prism artworks
+- Filter by color attributes and creation date
+- Detailed metadata and color attribution
+- IPFS-hosted artwork and metadata
+
+## 🏗️ Technical Architecture
+
+### Frontend Stack
+- **Framework**: Next.js 15.5.0 with React 19
+- **Styling**: Tailwind CSS 4 with custom glass morphism effects
+- **Web3**: Wagmi + RainbowKit for wallet connectivity
+- **Blockchain**: Shape Sepolia testnet integration
+
+### Smart Contract
+- **Contract**: ERC-721 NFT collection ("PRISM" - PRSM)
+- **Network**: Shape Sepolia
+- **Features**: 
+  - Mint function with automatic royalty distribution
+  - Owner-only minting with payment validation
+  - IPFS metadata storage
+
+### AI Integration
+- **Model**: OpenAI GPT-4.1-mini with image generation
+- **Color Precision**: Base64 color swatch references for exact color matching
+- **Prompt Engineering**: Specialized prompts for digital art generation
+
+### Infrastructure
+- **IPFS**: Zora's IPFS uploader for decentralized storage
+- **APIs**: Alchemy for NFT data and blockchain interactions
+- **Metadata**: ERC-721 compliant with color attributes
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 1. Connect Your Wallet
+- Click "Connect Wallet" in the navigation
+- Select your preferred wallet provider
+- Ensure you're on Shape Sepolia testnet
 
-- Node.js 18+ 
-- pnpm (recommended) or npm
+### 2. Browse Colors
+- Visit "My Colors" to see owned color NFTs
+- Use the "Marketplace" tab to purchase new colors
+- Each color shows earning potential and usage statistics
 
-### Installation
+### 3. Create Artwork
+- Go to "Create" page
+- Select up to 5 colors from your collection
+- Click "Generate Artwork" to create AI art
+- Preview your unique artwork
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd shapecraft/client
+### 4. Mint NFT
+- Click "Mint Artwork" (costs 0.001 ETH)
+- Automatic royalty distribution to color owners
+- Receive your NFT with IPFS metadata
+- View transaction details and explorer links
+
+### 5. Explore Gallery
+- Browse all minted Prism artworks
+- Filter by color attributes
+- View detailed NFT information
+- See color attribution and creator details
+
+## 🔗 Contract Addresses
+
+### Shape Sepolia Testnet
+- **Prism Collection**: `0x53eEB3A7D3646735F779a539A52EC5E900D5a154`
+- **Prism Wallet**: `0xB62E542B161DbcF5adA06ddb17815B13b63FeE0f`
+
+### Base Mainnet (Color NFTs)
+- **BaseColors Contract**: `0x7Bc1C072742D8391817EB4Eb2317F98dc72C61dB`
+
+## 📊 Economics Model
+
+### Revenue Flow
+1. **User Payment**: 0.001 ETH to mint artwork
+2. **Color Royalties**: 0.0001 ETH per color owner (max 5 colors = 0.0005 ETH)
+3. **Platform Fee**: Remaining ETH goes to Prism treasury
+
+### Color Owner Benefits
+- **Passive Income**: Earn ETH when colors are used
+- **Usage Tracking**: Monitor artwork creation with your colors
+- **ROI Analytics**: Track return on color NFT investments
+- **Participatory Licensing**: Your colors enable creative expression
+
+## 🛠️ API Endpoints
+
+### `/api/generate-artwork`
+- **Method**: POST
+- **Body**: `{ colors: string[] }`
+- **Response**: AI-generated artwork with metadata
+
+### `/api/relay`
+- **Method**: POST  
+- **Body**: `{ txHash: string, hexColors: string[], imageUrl: string }`
+- **Response**: NFT minting result with royalty distribution
+
+## 🔍 Code Structure
+
 ```
-
-2. Install dependencies:
-```bash
-pnpm install
-# or
-npm install
+prism/
+├── app/                    # Next.js app router
+│   ├── api/               # API routes
+│   ├── create/            # Artwork creation page
+│   ├── gallery/           # NFT gallery
+│   ├── colors/            # Color management
+│   └── page.js           # Landing page
+├── components/            # React components
+├── contracts/             # Smart contract
+├── lib/                   # Utilities and constants
+└── public/               # Static assets
 ```
-
-3. Run the development server:
-```bash
-pnpm dev
-# or
-npm run dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 🎨 How It Works
-
-1. **Choose Colors**: Select colors using the color picker, generate random palettes, or pick from presets
-2. **Generate Art**: Use AI to create unique artworks from your selected color palette
-3. **Mint & Share**: Mint your artwork as an NFT with automatic royalty distribution to color owners
-4. **Earn Royalties**: Color NFT owners earn passive income when their colors are used in new artworks
-
-## 📱 Pages & Features
-
-### Landing Page (`/`)
-- Hero section with animated color orbs
-- Feature showcase
-- Call-to-action sections
-
-### Create Page (`/create`)
-- Advanced color picker with hex input, visual picker, and presets
-- Random color generation
-- AI art generation with custom prompts
-- Real-time preview
-- One-click minting
-
-### Gallery Page (`/gallery`)
-- Browse all generated artworks
-- Filter by price and royalty rates
-- Sort by newest, price (low to high), price (high to low)
-- Detailed artwork modals
-- Purchase functionality
-
-### Colors Page (`/colors`)
-- Portfolio management for owned color NFTs
-- Earnings tracking and statistics
-- Color marketplace for purchasing new colors
-- ROI calculations
-
-## 🛠 Technology Stack
-
-- **Frontend**: Next.js 15, React 19, Tailwind CSS 4
-- **Web3**: RainbowKit, Wagmi, Viem
-- **Styling**: Tailwind CSS with custom gradients and animations
-- **Icons**: Emoji-based for simplicity and universal support
-
-## 🔧 Mock Functions
-
-Currently, the app uses mock functions for:
-- Smart contract interactions (`lib/mockApi.js`)
-- AI art generation
-- NFT minting
-- Marketplace operations
-
-These will be replaced with real implementations:
-- Smart contracts for color NFTs and art minting
-- AI art generation API integration
-- IPFS for metadata storage
-
-## 🎯 Key Components
-
-### ColorPicker Component
-- Supports hex input, visual color picker, and preset colors
-- Color harmony suggestions
-- Drag and drop functionality
-- Maximum color limits
-- Validation for hex codes
-
-### Mock API Layer
-- `mockSmartContract`: Simulates blockchain interactions
-- `mockAIService`: Simulates AI art generation
-- `mockMarketplace`: Simulates marketplace operations
-- `utils`: Helper functions for colors and formatting
 
 ## 🎨 Design System
 
-- **Colors**: Purple/pink gradient theme with glassmorphism
-- **Typography**: Geist Sans for body text, Geist Mono for code
-- **Animations**: Smooth transitions, hover effects, and loading states
-- **Responsive**: Mobile-first design with Tailwind CSS breakpoints
+### Color Palette
+- **Primary**: Slate grays with gradient overlays
+- **Accents**: Dynamic colors based on user selections
+- **Effects**: Glass morphism, subtle animations, gradient backgrounds
 
-## 📄 License
+### Typography
+- **Font**: Geist Sans and Geist Mono
+- **Styles**: Modern, clean, Web3-native aesthetic
 
-This project is part of the Shapecraft ecosystem and follows the project's licensing terms.
+## 🚧 Future Roadmap
 
-## 🚧 Development Status
+- [ ] **Advanced AI Models**: Integrate more sophisticated art generation
+- [ ] **Color Marketplace**: Direct color trading within Prism
+- [ ] **Social Features**: Artist profiles and collection curation
 
-This is a prototype/demo version with mock functionality. The following features are planned for production:
 
-- [ ] Smart contract integration
-- [ ] Real AI art generation API
-- [ ] IPFS integration for metadata
-- [ ] User authentication and profiles
-- [ ] Advanced filtering and search
-- [ ] Mobile app version
-- [ ] Analytics dashboard
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-For major changes, please open an issue first to discuss what you would like to change.
+*Prism: Where every color tells a story, and every artwork shares its success.*
